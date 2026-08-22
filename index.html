@@ -47,12 +47,10 @@
             --bg-header: #101010;
             --bg-button: #272727;
             --bg-button-hover: #363636;
-            --bg-card: #151515;
             --border: #292929;
             --text-main: #ffffff;
             --text-secondary: #a8a8a8;
             --accent: #ffd400;
-            --danger: #ff4d4d;
         }
 
         * {
@@ -81,6 +79,7 @@
         a {
             color: inherit;
         }
+
 
         /* Sidebar */
 
@@ -196,6 +195,7 @@
             outline: none;
         }
 
+
         /* Top Header */
 
         .top-header {
@@ -248,6 +248,7 @@
             cursor: pointer;
         }
 
+
         /* Main Layout */
 
         .main {
@@ -260,6 +261,7 @@
             margin: 0 auto;
         }
 
+
         /* Categories */
 
         .categories {
@@ -267,7 +269,7 @@
             gap: 10px;
             overflow-x: auto;
             padding-bottom: 4px;
-            margin-bottom: 22px;
+            margin-bottom: 28px;
             scrollbar-width: none;
         }
 
@@ -297,81 +299,8 @@
             color: #111111;
         }
 
-        /* Hero */
 
-        .section-title {
-            font-size: 23px;
-            margin-bottom: 16px;
-            font-weight: 800;
-        }
-
-        .hero {
-            min-height: 280px;
-            border: 1px solid #272727;
-            border-radius: 16px;
-            margin-bottom: 32px;
-            padding: 38px 42px;
-            display: flex;
-            align-items: center;
-            background:
-                radial-gradient(
-                    circle at 85% 50%,
-                    rgba(255, 212, 0, 0.17),
-                    transparent 38%
-                ),
-                linear-gradient(
-                    135deg,
-                    #1d1d1d,
-                    #111111
-                );
-        }
-
-        .hero-content {
-            max-width: 720px;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            padding: 9px 14px;
-            margin-bottom: 18px;
-            background: var(--accent);
-            color: #111111;
-            border-radius: 6px;
-            font-weight: 800;
-            font-size: 13px;
-        }
-
-        .hero h1 {
-            font-size: clamp(32px, 5vw, 50px);
-            line-height: 1.08;
-            margin-bottom: 16px;
-        }
-
-        .hero p {
-            color: #bbbbbb;
-            font-size: 16px;
-            line-height: 1.7;
-            margin-bottom: 24px;
-        }
-
-        .hero-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-            padding: 13px 20px;
-            background: white;
-            color: #111111;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 800;
-            transition: 0.2s ease;
-        }
-
-        .hero-button:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Video Grid */
+        /* Videos */
 
         .videos-header {
             display: flex;
@@ -381,8 +310,9 @@
             margin-bottom: 18px;
         }
 
-        .videos-header h2 {
-            font-size: 22px;
+        .videos-header h1 {
+            font-size: 23px;
+            font-weight: 800;
         }
 
         .video-count {
@@ -497,6 +427,7 @@
             display: none;
         }
 
+
         /* Empty State */
 
         .empty-state {
@@ -507,6 +438,7 @@
             text-align: center;
             color: var(--text-secondary);
         }
+
 
         /* Footer */
 
@@ -535,6 +467,7 @@
         .footer-socials a:hover {
             color: var(--accent);
         }
+
 
         /* Responsive */
 
@@ -593,10 +526,6 @@
                 margin-left: 72px;
             }
 
-            .hero {
-                padding: 28px 24px;
-            }
-
         }
 
         @media (max-width: 620px) {
@@ -607,14 +536,6 @@
 
             .category-button {
                 padding: 10px 13px;
-            }
-
-            .hero {
-                min-height: 250px;
-            }
-
-            .hero p {
-                font-size: 14px;
             }
 
         }
@@ -811,46 +732,13 @@
             </div>
 
 
-            <!-- Hero -->
-
-            <h2 class="section-title">Explore</h2>
-
-
-            <section class="hero">
-
-                <div class="hero-content">
-
-                    <span class="hero-badge">
-                        4K WALKING TOURS
-                    </span>
-
-                    <h1>
-                        Explore the World Step by Step
-                    </h1>
-
-                    <p>
-                        Discover cities, historic streets, coastlines,
-                        local neighborhoods and unforgettable destinations
-                        through immersive 4K walking videos.
-                    </p>
-
-                    <a href="#videos" class="hero-button">
-                        Explore Tours
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-
-                </div>
-
-            </section>
-
-
             <!-- Videos -->
 
             <section id="videos">
 
                 <div class="videos-header">
 
-                    <h2>Latest Walking Tours</h2>
+                    <h1>Latest Walking Tours</h1>
 
                     <div class="video-count" id="videoCount">
                         6 videos
@@ -896,9 +784,9 @@
 
                         <div class="video-info">
 
-                            <h3 class="video-title">
+                            <h2 class="video-title">
                                 Walking in Izmir, Turkey | Konak & Alsancak 4K Walking Tour
-                            </h3>
+                            </h2>
 
                             <div class="video-channel">
                                 Free Walk
@@ -944,9 +832,9 @@
 
                         <div class="video-info">
 
-                            <h3 class="video-title">
+                            <h2 class="video-title">
                                 Cesme & Alacati, Turkey | 4K Walking Tour
-                            </h3>
+                            </h2>
 
                             <div class="video-channel">
                                 Free Walk
@@ -992,9 +880,9 @@
 
                         <div class="video-info">
 
-                            <h3 class="video-title">
+                            <h2 class="video-title">
                                 Kusadasi, Turkey Sunset Walk | 4K HDR
-                            </h3>
+                            </h2>
 
                             <div class="video-channel">
                                 Free Walk
@@ -1040,9 +928,9 @@
 
                         <div class="video-info">
 
-                            <h3 class="video-title">
+                            <h2 class="video-title">
                                 Izmir City Walk | Bostanli & Karsiyaka 4K Walking Tour
-                            </h3>
+                            </h2>
 
                             <div class="video-channel">
                                 Free Walk
@@ -1088,9 +976,9 @@
 
                         <div class="video-info">
 
-                            <h3 class="video-title">
+                            <h2 class="video-title">
                                 Walking in Izmir, Turkey | Konak Bazaar 4K Walking Tour
-                            </h3>
+                            </h2>
 
                             <div class="video-channel">
                                 Free Walk
@@ -1136,9 +1024,9 @@
 
                         <div class="video-info">
 
-                            <h3 class="video-title">
+                            <h2 class="video-title">
                                 Cesmealti City Walk | Turkey 4K Coastal Walking Tour
-                            </h3>
+                            </h2>
 
                             <div class="video-channel">
                                 Free Walk
