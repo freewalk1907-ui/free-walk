@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Free Walk 4K - Ultra HD Walking Tours</title>
+
+    <meta
+        name="description"
+        content="Explore world cities, historic streets, coastlines and scenic routes through immersive 4K walking tours."
+    >
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-77Q6VE0E14"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag("js", new Date());
+        gtag("config", "G-77Q6VE0E14");
+    </script>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+
+        :root {
+            --bg-main: #0f0f0f;
+            --bg-sidebar: #111111;
+            --bg-header: #101010;
+            --bg-button: #272727;
+            --bg-button-hover: #363636;
+            --bg-card: #151515;
+            --border: #292929;
+            --text-main: #ffffff;
+            --text-secondary: #a8a8a8;
+            --accent: #ffd400;
+            --danger: #ff4d4d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg-main);
+            color: var(--text-main);
+            font-family: "Inter", Arial, sans-serif;
+        }
+
+        button,
+        input,
+        select {
+            font-family: inherit;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        /* Sidebar */
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 230px;
+            height: 100vh;
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            height: 72px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 0 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .menu-toggle {
+            width: 32px;
+            height: 32px;
+            border: 0;
+            background: transparent;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-left {
+            background: var(--accent);
+            color: #111111;
+            padding: 8px 10px;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .brand-right {
+            background: white;
+            color: #111111;
+            padding: 8px 10px;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .sidebar-nav {
+            padding: 14px 10px;
+        }
+
+        .nav-link {
+            width: 100%;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 0 14px;
+            margin-bottom: 5px;
+            color: #cfcfcf;
+            text-decoration: none;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.2s ease;
+        }
+
+        .nav-link i {
+            width: 22px;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        .nav-link:hover {
+            background: #202020;
+            color: white;
+        }
+
+        .nav-link.active {
+            background: #292929;
+            color: white;
+            font-weight: 700;
+        }
+
+        .nav-divider {
+            height: 1px;
+            background: var(--border);
+            margin: 16px 4px;
+        }
+
+        .language-box {
+            padding: 4px 10px;
+        }
+
+        .language-select {
+            width: 100%;
+            height: 42px;
+            background: #181818;
+            color: var(--accent);
+            border: 1px solid #3a3a3a;
+            border-radius: 8px;
+            padding: 0 12px;
+            font-weight: 700;
+            outline: none;
+        }
+
+        /* Top Header */
+
+        .top-header {
+            position: fixed;
+            top: 0;
+            left: 230px;
+            right: 0;
+            height: 72px;
+            background: rgba(15, 15, 15, 0.98);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 26px;
+            z-index: 900;
+        }
+
+        .search-box {
+            width: min(640px, 100%);
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            height: 42px;
+            padding: 0 52px 0 18px;
+            border: 1px solid #333333;
+            border-radius: 24px;
+            background: #151515;
+            color: white;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .search-box input:focus {
+            border-color: #555555;
+        }
+
+        .search-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 52px;
+            height: 42px;
+            border: 0;
+            border-left: 1px solid #333333;
+            border-radius: 0 24px 24px 0;
+            background: #222222;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Main Layout */
+
+        .main {
+            margin-left: 230px;
+            padding: 95px 26px 50px;
+        }
+
+        .content {
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        /* Categories */
+
+        .categories {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            margin-bottom: 22px;
+            scrollbar-width: none;
+        }
+
+        .categories::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-button {
+            flex-shrink: 0;
+            border: 0;
+            background: var(--bg-button);
+            color: white;
+            border-radius: 8px;
+            padding: 11px 16px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .category-button:hover {
+            background: var(--bg-button-hover);
+        }
+
+        .category-button.active {
+            background: white;
+            color: #111111;
+        }
+
+        /* Hero */
+
+        .section-title {
+            font-size: 23px;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .hero {
+            min-height: 280px;
+            border: 1px solid #272727;
+            border-radius: 16px;
+            margin-bottom: 32px;
+            padding: 38px 42px;
+            display: flex;
+            align-items: center;
+            background:
+                radial-gradient(
+                    circle at 85% 50%,
+                    rgba(255, 212, 0, 0.17),
+                    transparent 38%
+                ),
+                linear-gradient(
+                    135deg,
+                    #1d1d1d,
+                    #111111
+                );
+        }
+
+        .hero-content {
+            max-width: 720px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 9px 14px;
+            margin-bottom: 18px;
+            background: var(--accent);
+            color: #111111;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 13px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 50px);
+            line-height: 1.08;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            color: #bbbbbb;
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .hero-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 13px 20px;
+            background: white;
+            color: #111111;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 800;
+            transition: 0.2s ease;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Video Grid */
+
+        .videos-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 18px;
+        }
+
+        .videos-header h2 {
+            font-size: 22px;
+        }
+
+        .video-count {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 30px 20px;
+        }
+
+        .video-card {
+            min-width: 0;
+        }
+
+        .thumbnail {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 10px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #323232,
+                    #151515 55%,
+                    #242424
+                );
+            border: 1px solid #262626;
+            cursor: pointer;
+        }
+
+        .thumbnail-inner {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(0, 0, 0, 0.9),
+                    rgba(0, 0, 0, 0.05)
+                );
+        }
+
+        .thumbnail-city {
+            font-size: clamp(24px, 4vw, 42px);
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .thumbnail-location {
+            margin-top: 5px;
+            color: #dddddd;
+            font-size: 14px;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 58px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ff0033;
+            border-radius: 10px;
+            color: white;
+            font-size: 18px;
+            opacity: 0;
+            transition: 0.2s ease;
+        }
+
+        .thumbnail:hover .play-button {
+            opacity: 1;
+        }
+
+        .quality-badge {
+            position: absolute;
+            right: 8px;
+            bottom: 8px;
+            background: rgba(0, 0, 0, 0.82);
+            color: #dddddd;
+            border-radius: 4px;
+            padding: 4px 7px;
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+        .video-info {
+            padding: 11px 3px 0;
+        }
+
+        .video-title {
+            font-size: 15px;
+            line-height: 1.45;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        .video-channel {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .video-card.hidden {
+            display: none;
+        }
+
+        /* Empty State */
+
+        .empty-state {
+            display: none;
+            border: 1px dashed #333333;
+            border-radius: 12px;
+            padding: 60px 20px;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+
+        .footer {
+            margin-left: 230px;
+            border-top: 1px solid var(--border);
+            padding: 35px 24px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .footer-socials {
+            margin-top: 14px;
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+        }
+
+        .footer-socials a {
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        .footer-socials a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+
+        @media (max-width: 1150px) {
+
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 780px) {
+
+            .sidebar {
+                width: 72px;
+            }
+
+            .sidebar-header {
+                justify-content: center;
+                padding: 0;
+            }
+
+            .brand {
+                display: none;
+            }
+
+            .nav-link {
+                justify-content: center;
+                padding: 0;
+            }
+
+            .nav-link span {
+                display: none;
+            }
+
+            .nav-divider {
+                margin-left: 8px;
+                margin-right: 8px;
+            }
+
+            .language-box {
+                display: none;
+            }
+
+            .top-header {
+                left: 72px;
+                padding: 0 14px;
+            }
+
+            .main {
+                margin-left: 72px;
+                padding: 92px 14px 35px;
+            }
+
+            .footer {
+                margin-left: 72px;
+            }
+
+            .hero {
+                padding: 28px 24px;
+            }
+
+        }
+
+        @media (max-width: 620px) {
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-button {
+                padding: 10px 13px;
+            }
+
+            .hero {
+                min-height: 250px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-header">
+
+            <button class="menu-toggle" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="brand">
+                <span class="brand-left">FREE</span>
+                <span class="brand-right">WALK</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="#" class="nav-link active">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+
+            <a href="#" class="nav-link">
+                <i class="fa-solid fa-earth-americas"></i>
+                <span>World Map</span>
+            </a>
+
+            <a href="#" class="nav-link">
+                <i class="fa-solid fa-hotel"></i>
+                <span>Hotels</span>
+            </a>
+
+            <a href="#" class="nav-link">
+                <i class="fa-solid fa-camera"></i>
+                <span>World Photos</span>
+            </a>
+
+            <a href="#" class="nav-link">
+                <i class="fa-solid fa-landmark"></i>
+                <span>History & Boutique</span>
+            </a>
+
+
+            <div class="nav-divider"></div>
+
+
+            <div class="language-box">
+
+                <select class="language-select">
+                    <option>English</option>
+                </select>
+
+            </div>
+
+
+            <div class="nav-divider"></div>
+
+
+            <a href="#" class="nav-link">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>About</span>
+            </a>
+
+            <a href="#" class="nav-link">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Privacy Policy</span>
+            </a>
+
+            <a href="#" class="nav-link">
+                <i class="fa-regular fa-envelope"></i>
+                <span>Contact</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- Top Header -->
+
+    <header class="top-header">
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search cities, countries, or walking tours..."
+                autocomplete="off"
+            >
+
+            <button
+                class="search-button"
+                type="button"
+                aria-label="Search"
+            >
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- Main Content -->
+
+    <main class="main">
+
+        <div class="content">
+
+
+            <!-- Categories -->
+
+            <div class="categories">
+
+                <button
+                    class="category-button active"
+                    data-category="all"
+                >
+                    All
+                </button>
+
+                <button
+                    class="category-button"
+                    data-category="walking"
+                >
+                    Walking Tours
+                </button>
+
+                <button
+                    class="category-button"
+                    data-category="drone"
+                >
+                    Drone & Aerial
+                </button>
+
+                <button
+                    class="category-button"
+                    data-category="pov"
+                >
+                    POV Walks
+                </button>
+
+                <button
+                    class="category-button"
+                    data-category="night"
+                >
+                    Night & Rain
+                </button>
+
+                <button
+                    class="category-button"
+                    data-category="culture"
+                >
+                    Museums & Culture
+                </button>
+
+                <button
+                    class="category-button"
+                    data-category="food"
+                >
+                    Street Food
+                </button>
+
+                <button
+                    class="category-button"
+                    data-category="nature"
+                >
+                    Nature Walks
+                </button>
+
+                <button
+                    class="category-button"
+                    data-category="documentary"
+                >
+                    Documentaries
+                </button>
+
+            </div>
+
+
+            <!-- Hero -->
+
+            <h2 class="section-title">Explore</h2>
+
+
+            <section class="hero">
+
+                <div class="hero-content">
+
+                    <span class="hero-badge">
+                        4K WALKING TOURS
+                    </span>
+
+                    <h1>
+                        Explore the World Step by Step
+                    </h1>
+
+                    <p>
+                        Discover cities, historic streets, coastlines,
+                        local neighborhoods and unforgettable destinations
+                        through immersive 4K walking videos.
+                    </p>
+
+                    <a href="#videos" class="hero-button">
+                        Explore Tours
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- Videos -->
+
+            <section id="videos">
+
+                <div class="videos-header">
+
+                    <h2>Latest Walking Tours</h2>
+
+                    <div class="video-count" id="videoCount">
+                        6 videos
+                    </div>
+
+                </div>
+
+
+                <div class="video-grid" id="videoGrid">
+
+
+                    <!-- Video Card 1 -->
+
+                    <article
+                        class="video-card"
+                        data-category="walking"
+                        data-title="Izmir Konak Alsancak Turkey Walking Tour"
+                    >
+
+                        <div class="thumbnail">
+
+                            <div class="thumbnail-inner">
+
+                                <div class="thumbnail-city">
+                                    IZMIR
+                                </div>
+
+                                <div class="thumbnail-location">
+                                    Konak & Alsancak
+                                </div>
+
+                            </div>
+
+                            <div class="play-button">
+                                <i class="fa-solid fa-play"></i>
+                            </div>
+
+                            <span class="quality-badge">
+                                4K 60FPS
+                            </span>
+
+                        </div>
+
+                        <div class="video-info">
+
+                            <h3 class="video-title">
+                                Walking in Izmir, Turkey | Konak & Alsancak 4K Walking Tour
+                            </h3>
+
+                            <div class="video-channel">
+                                Free Walk
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Video Card 2 -->
+
+                    <article
+                        class="video-card"
+                        data-category="walking"
+                        data-title="Cesme Alacati Turkey Walking Tour"
+                    >
+
+                        <div class="thumbnail">
+
+                            <div class="thumbnail-inner">
+
+                                <div class="thumbnail-city">
+                                    CESME
+                                </div>
+
+                                <div class="thumbnail-location">
+                                    Alacati
+                                </div>
+
+                            </div>
+
+                            <div class="play-button">
+                                <i class="fa-solid fa-play"></i>
+                            </div>
+
+                            <span class="quality-badge">
+                                4K 60FPS
+                            </span>
+
+                        </div>
+
+                        <div class="video-info">
+
+                            <h3 class="video-title">
+                                Cesme & Alacati, Turkey | 4K Walking Tour
+                            </h3>
+
+                            <div class="video-channel">
+                                Free Walk
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Video Card 3 -->
+
+                    <article
+                        class="video-card"
+                        data-category="night"
+                        data-title="Kusadasi Turkey Sunset Evening Walk"
+                    >
+
+                        <div class="thumbnail">
+
+                            <div class="thumbnail-inner">
+
+                                <div class="thumbnail-city">
+                                    KUSADASI
+                                </div>
+
+                                <div class="thumbnail-location">
+                                    Sunset Walk
+                                </div>
+
+                            </div>
+
+                            <div class="play-button">
+                                <i class="fa-solid fa-play"></i>
+                            </div>
+
+                            <span class="quality-badge">
+                                4K HDR
+                            </span>
+
+                        </div>
+
+                        <div class="video-info">
+
+                            <h3 class="video-title">
+                                Kusadasi, Turkey Sunset Walk | 4K HDR
+                            </h3>
+
+                            <div class="video-channel">
+                                Free Walk
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Video Card 4 -->
+
+                    <article
+                        class="video-card"
+                        data-category="walking"
+                        data-title="Izmir Bostanli Karsiyaka Walking Tour"
+                    >
+
+                        <div class="thumbnail">
+
+                            <div class="thumbnail-inner">
+
+                                <div class="thumbnail-city">
+                                    IZMIR
+                                </div>
+
+                                <div class="thumbnail-location">
+                                    Bostanli & Karsiyaka
+                                </div>
+
+                            </div>
+
+                            <div class="play-button">
+                                <i class="fa-solid fa-play"></i>
+                            </div>
+
+                            <span class="quality-badge">
+                                4K 60FPS
+                            </span>
+
+                        </div>
+
+                        <div class="video-info">
+
+                            <h3 class="video-title">
+                                Izmir City Walk | Bostanli & Karsiyaka 4K Walking Tour
+                            </h3>
+
+                            <div class="video-channel">
+                                Free Walk
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Video Card 5 -->
+
+                    <article
+                        class="video-card"
+                        data-category="culture"
+                        data-title="Izmir Konak Bazaar Turkey Culture Walking Tour"
+                    >
+
+                        <div class="thumbnail">
+
+                            <div class="thumbnail-inner">
+
+                                <div class="thumbnail-city">
+                                    KONAK
+                                </div>
+
+                                <div class="thumbnail-location">
+                                    Historic Bazaar
+                                </div>
+
+                            </div>
+
+                            <div class="play-button">
+                                <i class="fa-solid fa-play"></i>
+                            </div>
+
+                            <span class="quality-badge">
+                                4K
+                            </span>
+
+                        </div>
+
+                        <div class="video-info">
+
+                            <h3 class="video-title">
+                                Walking in Izmir, Turkey | Konak Bazaar 4K Walking Tour
+                            </h3>
+
+                            <div class="video-channel">
+                                Free Walk
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Video Card 6 -->
+
+                    <article
+                        class="video-card"
+                        data-category="nature"
+                        data-title="Izmir Cesmealti Coastal Walking Tour Turkey"
+                    >
+
+                        <div class="thumbnail">
+
+                            <div class="thumbnail-inner">
+
+                                <div class="thumbnail-city">
+                                    CESMEALTI
+                                </div>
+
+                                <div class="thumbnail-location">
+                                    Coastal Walk
+                                </div>
+
+                            </div>
+
+                            <div class="play-button">
+                                <i class="fa-solid fa-play"></i>
+                            </div>
+
+                            <span class="quality-badge">
+                                4K 60FPS
+                            </span>
+
+                        </div>
+
+                        <div class="video-info">
+
+                            <h3 class="video-title">
+                                Cesmealti City Walk | Turkey 4K Coastal Walking Tour
+                            </h3>
+
+                            <div class="video-channel">
+                                Free Walk
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+
+                <div
+                    class="empty-state"
+                    id="emptyState"
+                >
+                    No walking tours found.
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 Free Walk. All rights reserved.
+        </p>
+
+        <div class="footer-socials">
+
+            <a href="#" aria-label="YouTube">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+
+            <a href="#" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+
+    <script>
+
+        const searchInput =
+            document.getElementById("searchInput");
+
+        const categoryButtons =
+            document.querySelectorAll(".category-button");
+
+        const videoCards =
+            document.querySelectorAll(".video-card");
+
+        const videoCount =
+            document.getElementById("videoCount");
+
+        const emptyState =
+            document.getElementById("emptyState");
+
+
+        let activeCategory = "all";
+
+
+        function filterVideos() {
+
+            const searchText =
+                searchInput.value
+                    .trim()
+                    .toLowerCase();
+
+
+            let visibleVideos = 0;
+
+
+            videoCards.forEach((card) => {
+
+                const title =
+                    card.dataset.title.toLowerCase();
+
+                const category =
+                    card.dataset.category;
+
+
+                const matchesSearch =
+                    title.includes(searchText);
+
+
+                const matchesCategory =
+                    activeCategory === "all" ||
+                    category === activeCategory;
+
+
+                const shouldShow =
+                    matchesSearch &&
+                    matchesCategory;
+
+
+                card.classList.toggle(
+                    "hidden",
+                    !shouldShow
+                );
+
+
+                if (shouldShow) {
+                    visibleVideos++;
+                }
+
+            });
+
+
+            videoCount.textContent =
+                `${visibleVideos} ${
+                    visibleVideos === 1
+                        ? "video"
+                        : "videos"
+                }`;
+
+
+            emptyState.style.display =
+                visibleVideos === 0
+                    ? "block"
+                    : "none";
+
+        }
+
+
+        searchInput.addEventListener(
+            "input",
+            filterVideos
+        );
+
+
+        categoryButtons.forEach((button) => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    categoryButtons.forEach(
+                        (item) => {
+                            item.classList.remove("active");
+                        }
+                    );
+
+
+                    button.classList.add("active");
+
+
+                    activeCategory =
+                        button.dataset.category;
+
+
+                    filterVideos();
+
+                }
+            );
+
+        });
+
+
+        filterVideos();
+
+    </script>
+
+
+</body>
+
+</html>
